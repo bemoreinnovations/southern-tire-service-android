@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/loyaltyLevelView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Platinum Rewards Member"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/customerSinceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer since 6/13"
+        style="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:id="@+id/amountSpentView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$3,600.36 spent"
+        style="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rewards Benefits"
+        android:layout_marginTop="16dp"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15% off each purchase"/>
+
+</LinearLayout>
