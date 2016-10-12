@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.bemore.southerntireservice.R;
 import com.bemore.southerntireservice.model.ParcelableArg;
+import com.bemore.southerntireservice.otto.ScopedBus;
 
 import butterknife.ButterKnife;
 
@@ -19,21 +20,18 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseFragment extends Fragment {
     private ProgressDialog progressDialog;
-//    protected ScopedBus scopedBus = new ScopedBus();
+    protected ScopedBus scopedBus = new ScopedBus();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        scopedBus.register(this);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
-//    protected ScopedBus getBus() {
-//        return scopedBus;
-//    }
 
     @Override
     public void onPause() {
@@ -42,9 +40,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        scopedBus.paused();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-//        scopedBus.resumed();
+        scopedBus.resumed();
     }
 
     @Override

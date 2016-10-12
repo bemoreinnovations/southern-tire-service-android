@@ -81,11 +81,11 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/addVehicleButton"
+        android:id="@+id/saveVehicleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:text="Add Vehicle" />
+        android:text="Save" />
 
 </LinearLayout>

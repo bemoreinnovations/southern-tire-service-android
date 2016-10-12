@@ -1,9 +1,12 @@
 package com.bemore.southerntireservice.ui.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bemore.southerntireservice.otto.ScopedBus;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,6 +17,8 @@ public abstract class RecyclerViewArrayAdapter<T, VH extends RecyclerViewHolder>
 
     private List<T> mItems;
     protected RecyclerViewHolder.OnItemClickListener onItemClickListener;
+    private Context context;
+    protected ScopedBus scopedBus = new ScopedBus();
 
     public RecyclerViewArrayAdapter() {
         super();
@@ -103,6 +108,9 @@ public abstract class RecyclerViewArrayAdapter<T, VH extends RecyclerViewHolder>
     @Override
     public final VH onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutResId(), parent, false);
+
+        this.context = parent.getContext();
+
         return onCreateViewHolder(view);
     }
 
@@ -127,5 +135,13 @@ public abstract class RecyclerViewArrayAdapter<T, VH extends RecyclerViewHolder>
     public void sort(Comparator<? super T> comparator) {
         Collections.sort(mItems, comparator);
         notifyItemRangeChanged(0, getItemCount());
+    }
+
+    public List<T> getData() {
+        return mItems;
+    }
+
+    public Context getContext() {
+        return context;
     }
 }

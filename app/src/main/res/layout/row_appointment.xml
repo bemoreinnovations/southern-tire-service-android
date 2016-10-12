@@ -1,45 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="?selectableItemBackground"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!--<TextView-->
-    <!--android:id="@+id/year"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <!--<TextView-->
-    <!--android:id="@+id/make"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:tag="Bottom2">
 
-    <!--<TextView-->
-    <!--android:id="@+id/model"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_blue_A700"
+                android:padding="16dp"
+                android:src="@drawable/ic_pencil" />
 
-    <TextView
-        android:id="@+id/serviceType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        tools:text="Oil Change"
-        android:textColor="#000000"
-        android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/trash"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@color/red_A700"
+                android:padding="16dp"
+                android:src="@drawable/ic_trash" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Wed May 11 @ 11AM" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/vehicle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/serviceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:text="Oil Change" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Wed May 11 @ 11AM" />
+
+            <TextView
+                android:id="@+id/vehicle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
 
 </LinearLayout>

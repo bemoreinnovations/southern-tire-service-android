@@ -5,15 +5,19 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bemore.southerntireservice.R;
 import com.bemore.southerntireservice.model.User;
 import com.bemore.southerntireservice.model.Vehicle;
+import com.bemore.southerntireservice.otto.events.DeleteVehicleEvent;
+import com.bemore.southerntireservice.otto.events.EditVehicleEvent;
 import com.bemore.southerntireservice.ui.adapters.RecyclerViewHolder;
 import com.bemore.southerntireservice.ui.adapters.VehiclesAdapter;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +69,7 @@ public class MyVehiclesFragment extends BaseFragment implements RecyclerViewHold
 
     @OnClick(R.id.fab)
     public void onFabClick(View view) {
-        showFragmentWithSlidingTransition(new AddVehicleFragment(), true);
+        showFragmentWithSlidingTransition(new AddOrEditVehicleFragment(), true);
     }
 
     @Override
@@ -76,5 +80,20 @@ public class MyVehiclesFragment extends BaseFragment implements RecyclerViewHold
     @Override
     protected int getFragmentLayoutId() {
         return R.layout.fragment_my_vehicles;
+    }
+
+    @Subscribe
+    public void onEditVehicleEvent(EditVehicleEvent event) {
+        showFragmentWithSlidingTransition(AddOrEditVehicleFragment.newInstance(event.vehicle), true);
+    }
+
+    @Subscribe
+    public void onDeleteVehicleEvent(DeleteVehicleEvent event) {
+
+        Toast.makeText(getContext(), "Deleting vehicle from account", Toast.LENGTH_SHORT).show();
+
+        event.vehicle.deleteInBackground();
+
+        vehiclesAdapter.remove(event.vehicle);
     }
 }
